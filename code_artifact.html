@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>טומי ואן דה חיין | ניהול קמפיינים ממומנים לעסקים קטנים</title>
+    <meta name="description" content="מנהל קמפיינים ממומנים המתמחה בקידום עסקים קטנים באמצעות פרסום בפייסבוק, אינסטגרם וגוגל. אסטרטגיה, ניהול קמפיינים ותוצאות אמיתיות.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --dark-blue: #0A192F;
+            --light-blue: #2563EB;
+            --light-blue-hover: #1D4ED8;
+            --light-gray: #F8FAFC;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            --white: #FFFFFF;
+            --radius: 12px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Assistant', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* Typography */
+        h1, h2, h3, h4 { color: var(--dark-blue); font-weight: 700; }
+        h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 1rem; text-align: center; }
+        p { color: var(--text-muted); font-size: 1.125rem; }
+        
+        .section-subtitle { text-align: center; max-width: 700px; margin: 0 auto 3rem auto; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: var(--radius);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            gap: 10px;
+        }
+        .btn-primary {
+            background-color: var(--light-blue);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+        .btn-primary:hover {
+            background-color: var(--light-blue-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            color: var(--white);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--dark-blue);
+            border: 2px solid var(--dark-blue);
+        }
+        .btn-secondary:hover {
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        section { padding: 100px 0; }
+        .bg-gray { background-color: var(--light-gray); }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            padding: 15px 0;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--dark-blue); }
+        .logo span { color: var(--light-blue); }
+        .header-btn { font-size: 1rem; padding: 10px 20px; }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+            padding: 60px 0;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .hero-text p { font-size: 1.25rem; margin-bottom: 2.5rem; color: var(--text-dark); }
+        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+        .hero-image {
+            background: var(--light-gray);
+            border-radius: 24px;
+            padding: 20px;
+            position: relative;
+        }
+        .hero-img-placeholder {
+            width: 100%;
+            height: 500px; /* הוגדל קצת כדי לתת מקום ל-PDF */
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-blue);
+            font-size: 3rem;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden; /* מונע גלישה של ה-PDF החוצה */
+        }
+        
+        .hero-img-placeholder object {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background-color: #e2e8f0;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .about-text ul { margin-top: 1.5rem; }
+        .about-text li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .about-text li i { color: var(--light-blue); }
+
+        /* Cards Grid Generic */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.02);
+            text-align: right;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light-gray);
+            color: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+
+        /* Audience Tags */
+        .audience-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .audience-tag {
+            background: var(--white);
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .audience-tag i { color: var(--light-blue); }
+
+        /* Timeline */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-right: 30px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--light-blue);
+            opacity: 0.2;
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 40px; padding-right: 30px; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute;
+            right: -39px; /* Align with line */
+            top: 5px;
+            width: 22px;
+            height: 22px;
+            background: var(--light-blue);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+        .timeline-content {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .timeline-content h3 { margin-bottom: 10px; color: var(--light-blue); }
+
+        /* FAQ */
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            color: var(--dark-blue);
+            transition: var(--transition);
+        }
+        .faq-question:hover { background: var(--light-gray); }
+        .faq-question i { color: var(--light-blue); transition: transform 0.3s; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+        .faq-answer {
+            max-height: 0;
+            padding: 0 25px;
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* arbitrary max height for animation */
+            padding: 0 25px 20px 25px;
+            opacity: 1;
+        }
+
+        /* Contact Form */
+        .contact-wrapper {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--light-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+        .submit-btn { width: 100%; justify-content: center; font-size: 1.2rem; padding: 16px; }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #172a45 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+        .cta-section h2 { color: var(--white); margin-bottom: 20px; }
+        .cta-section p { color: #cbd5e1; margin-bottom: 40px; font-size: 1.25rem; }
+        .cta-section .btn-primary { background: var(--light-blue); }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 60px 0 30px 0;
+            text-align: center;
+        }
+        .footer-socials { display: flex; justify-content: center; gap: 20px; margin: 20px 0; }
+        .footer-socials a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+        .footer-socials a:hover { opacity: 1; color: var(--light-blue); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 30px; font-size: 0.9rem; opacity: 0.7; }
+
+        /* Mobile Sticky CTA */
+        .mobile-sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 15px 20px;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .mobile-sticky-cta .btn { width: 100%; }
+
+        /* Animations (AOS) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-grid, .about-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-text { order: 2; }
+            .hero-image { order: 1; margin-bottom: 30px; }
+            .hero-buttons { justify-content: center; }
+            h1 { font-size: 2.8rem; }
+            .about-image { margin: 0 auto; max-width: 300px; }
+            .about-text ul { display: inline-block; text-align: right; }
+        }
+        @media (max-width: 768px) {
+            section { padding: 70px 0; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 2rem; }
+            .mobile-sticky-cta { display: block; }
+            body { padding-bottom: 80px; } /* Space for mobile CTA */
+            .contact-wrapper { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                טומי<span>.</span>
+            </div>
+            <a href="https://wa.me/972552449840?text=היי%20טומי,%20אשמח%20לשמוע%20פרטים%20על%20ניהול%20קמפיינים" target="_blank" class="btn btn-primary header-btn" style="background-color: #25D366; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);"><i class="fa-brands fa-whatsapp"></i> שלחו הודעה</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero bg-gray">
+        <div class="container hero-grid">
+            <div class="hero-text reveal">
+                <h1>עסק קטן? אותך אני מחפש.</h1>
+                <p>אם העסק שלך טוב אבל חסרים לך לקוחות חדשים באופן קבוע – אני כאן כדי לעזור. אני בונה ומנהל קמפיינים ממומנים בפייסבוק, אינסטגרם וגוגל שמטרתם להביא לעסק שלך יותר פניות, יותר לקוחות ויותר צמיחה.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/972552449840?text=היי%20טומי,%20אשמח%20לשמוע%20פרטים%20על%20ניהול%20קמפיינים" target="_blank" class="btn btn-primary" style="background-color: #25D366; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);"><i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> לשיחת ייעוץ בוואטסאפ</a>
+                    <a href="#how-it-works" class="btn btn-secondary">איך זה עובד?</a>
+                </div>
+            </div>
+            <div class="hero-image reveal" style="transition-delay: 0.2s;">
+                <div class="hero-img-placeholder">
+                    <object data="תיק עבודות  שיווק דיגיטלי, תוכן ודאטה.pdf" type="application/pdf">
+                        <p>הדפדפן שלך לא תומך בתצוגת PDF מקדימה. <a href="תיק עבודות  שיווק דיגיטלי, תוכן ודאטה.pdf" target="_blank">לחץ כאן להורדת תיק העבודות.</a></p>
+                    </object>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="container reveal">
+        <div class="about-grid">
+            <div class="about-image">
+                <i class="fa-solid fa-user-tie" style="font-size: 4rem; margin-bottom:15px; display:block; text-align:center;"></i>
+                <div style="font-size: 1rem;">תמונת פורטרט מקצועית</div>
+            </div>
+            <div class="about-text">
+                <h2>נעים להכיר, אני טומי ואן דה חיין 👋</h2>
+                <p>אני בן 17, אבל בעולם הדיגיטל – התוצאות מדברות חזק יותר מהגיל. הספקתי לסיים לימודי מכללה בשיווק, לעבור שני קורסים מתקדמים בבינה מלאכותית (AI) 🤖, וללוות בהצלחה מעל ל-10 עסקים שונים – כשלכל אחד ואחד מהם הבאתי תוצאות מוכחות וגידול בפניות! 🚀</p>
+                <p style="margin-top: 15px;">במקביל, אני תלמיד כיתה י"ב במגמת מידע ונתונים (Data). הרקע הזה נותן לי יתרון תחרותי עצום עבורך: היכולת לצלול למספרים של הקמפיינים שלך, לנתח נתונים לעומק ולהסיק מסקנות מדויקות שמוזילות את עלויות הפרסום ומעלות את הרווחים 📊.</p>
+                <p style="margin-top: 15px;"><strong>המטרה שלי פשוטה:</strong></p>
+                <ul>
+                    <li><i class="fa-solid fa-check-circle"></i> לעזור לעסק שלך לקבל יותר פניות באופן קבוע.</li>
+                    <li><i class="fa-solid fa-check-circle"></i> להביא לקוחות איכותיים שבאמת רוצים לקנות.</li>
+                    <li><i class="fa-solid fa-check-circle"></i> לייצר מקסימום תוצאות במינימום תקציב – בצורה חכמה ומבוססת נתונים 🎯.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section id="audience" class="bg-gray reveal">
+        <div class="container">
+            <h2>למי השירות מתאים?</h2>
+            <p class="section-subtitle">ההתמחות שלי היא בעסקים קטנים ומקומיים שרוצים לייצר זרם לקוחות יציב.</p>
+            
+            <div class="audience-grid">
+                <div class="audience-tag"><i class="fa-solid fa-store"></i> בעלי עסקים קטנים</div>
+                <div class="audience-tag"><i class="fa-solid fa-hands-holding-child"></i> מטפלים</div>
+                <div class="audience-tag"><i class="fa-solid fa-bullseye"></i> מאמנים</div>
+                <div class="audience-tag"><i class="fa-solid fa-stethoscope"></i> קליניקות</div>
+                <div class="audience-tag"><i class="fa-solid fa-utensils"></i> מסעדות</div>
+                <div class="audience-tag"><i class="fa-solid fa-mug-hot"></i> בתי קפה</div>
+                <div class="audience-tag"><i class="fa-solid fa-shop"></i> חנויות מקומיות</div>
+                <div class="audience-tag"><i class="fa-solid fa-screwdriver-wrench"></i> נותני שירות</div>
+                <div class="audience-tag"><i class="fa-solid fa-rocket"></i> עסקים שרוצים להתחיל לפרסם</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="container reveal">
+        <h2>השירותים שלי</h2>
+        <p class="section-subtitle">מעטפת מלאה של שיווק דיגיטלי, מהתכנון ועד לליד שנסגר.</p>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon"><i class="fa-brands fa-meta"></i></div>
+                <h3>ניהול קמפיינים ממומנים</h3>
+                <p>בניית וניהול קמפיינים חכמים בפייסבוק, אינסטגרם וגוגל כדי להגיע לקהל המדויק ביותר עבורך.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-chess-knight"></i></div>
+                <h3>אסטרטגיית שיווק</h3>
+                <p>בניית תוכנית פרסום מקיפה המותאמת ספציפית ליעדים של העסק שלך ולתקציב שעומד לרשותך.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                <h3>קריאייטיב למודעות</h3>
+                <p>יצירת מודעות מושכות, כתיבה שיווקית חדה ועיצובים שמייצרים פניות אמיתיות ומעורבות.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
+                <h3>אופטימיזציה</h3>
+                <p>ניתוח נתונים ושיפור מתמיד של הקמפיינים כדי להפיק את המקסימום מכל שקל שמושקע בפרסום.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Me -->
+    <section id="benefits" class="bg-gray reveal">
+        <div class="container">
+            <h2>למה לעבוד איתי?</h2>
+            <p class="section-subtitle">אני לא "עוד סוכנות" שמתייחסת אליך כמו למספר. אצלי העסק שלך מקבל את כל הבמה.</p>
+            
+            <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="card" style="text-align:center; padding: 30px 20px;">
+                    <i class="fa-solid fa-handshake-angle" style="font-size: 2rem; color:var(--light-blue); margin-bottom:15px;"></i>
+                    <h4 style="font-size: 1.1rem; margin-bottom:10px;">יחס אישי לכל לקוח</h4>
+                </div>
+                <div class="card" style="text-align:center; padding: 30px 20px;">
+                    <i class="fa-solid fa-phone-volume" style="font-size: 2rem; color:var(--light-blue); margin-bottom:15px;"></i>
+                    <h4 style="font-size: 1.1rem; margin-bottom:10px;">זמינות גבוהה</h4>
+                </div>
+                <div class="card" style="text-align:center; padding: 30px 20px;">
+                    <i class="fa-solid fa-magnifying-glass-chart" style="font-size: 2rem; color:var(--light-blue); margin-bottom:15px;"></i>
+                    <h4 style="font-size: 1.1rem; margin-bottom:10px;">שקיפות מלאה</h4>
+                </div>
+                <div class="card" style="text-align:center; padding: 30px 20px;">
+                    <i class="fa-solid fa-briefcase" style="font-size: 2rem; color:var(--light-blue); margin-bottom:15px;"></i>
+                    <h4 style="font-size: 1.1rem; margin-bottom:10px;">חשיבה עסקית</h4>
+                </div>
+                <div class="card" style="text-align:center; padding: 30px 20px;">
+                    <i class="fa-solid fa-sliders" style="font-size: 2rem; color:var(--light-blue); margin-bottom:15px;"></i>
+                    <h4 style="font-size: 1.1rem; margin-bottom:10px;">התאמה אישית</h4>
+                </div>
+                <div class="card" style="text-align:center; padding: 30px 20px;">
+                    <i class="fa-solid fa-store" style="font-size: 2rem; color:var(--light-blue); margin-bottom:15px;"></i>
+                    <h4 style="font-size: 1.1rem; margin-bottom:10px;">התמחות בעסקים קטנים</h4>
+                </div>
+                <div class="card" style="text-align:center; padding: 30px 20px;">
+                    <i class="fa-solid fa-chart-pie" style="font-size: 2rem; color:var(--light-blue); margin-bottom:15px;"></i>
+                    <h4 style="font-size: 1.1rem; margin-bottom:10px;">מבוסס נתונים</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works (Timeline) -->
+    <section id="how-it-works" class="container reveal">
+        <h2>איך זה עובד?</h2>
+        <p class="section-subtitle">תהליך עבודה מסודר, שקוף וממוקד מטרה.</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>1. שיחת היכרות</h3>
+                    <p>נכיר את העסק שלך, את הלקוחות שאתה מחפש, ואת המטרות העסקיות שלך. נבדוק יחד אם אנחנו התאמה טובה.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2. בניית אסטרטגיית פרסום</h3>
+                    <p>אני מכין תוכנית עבודה מפורטת: באילו פלטפורמות נפרסם, מה יהיה המסר השיווקי ואיך נחלק את התקציב נכון.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>3. הקמת הקמפיינים</h3>
+                    <p>בניית המודעות, חיבור המערכות לניתוח נתונים, יצירת הקריאייטיב והשקת הקמפיין באוויר.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>4. מעקב, שיפור וצמיחה</h3>
+                    <p>מרגע שהקמפיין באוויר, אני עוקב אחר הביצועים, מבצע אופטימיזציה שוטפת ומוודא שההחזר על ההשקעה משתפר.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="bg-gray reveal">
+        <div class="container">
+            <h2>שאלות נפוצות</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">כמה תקציב צריך כדי להתחיל? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">
+                        <p>התקציב תלוי בתחום העיסוק ובפלטפורמה, אך גם לעסקים קטנים אפשר לבנות תוכנית רווחית בתקציבים הגיוניים. בשיחת הייעוץ נתאים את התקציב ליכולות ולמטרות שלך.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">תוך כמה זמן רואים תוצאות? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">
+                        <p>בדרך כלל ניתן לראות פניות ראשונות כבר בימים הראשונים לעליית הקמפיין. עם זאת, אופטימיזציה מלאה של האלגוריתם אורכת בין שבועיים לחודש, אז התוצאות משתפרות משמעותית.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">האם חייבים להתחייב? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">
+                        <p>לא. אני מאמין בלקוחות שנשארים בגלל התוצאות, ולא בגלל כבילות בחוזה. העבודה איתי נעשית על בסיס חודשי ללא התחייבות ארוכת טווח.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">באילו פלטפורמות אתה מפרסם? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">
+                        <p>ההתמחות שלי היא ברשתות של Meta (פייסבוק ואינסטגרם) ובמערכת של Google Ads (חיפוש, באנרים ויוטיוב). נבחר את הפלטפורמה שבה קהל היעד שלך נמצא.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">האם השירות מתאים גם לעסק קטן בתחילת הדרך? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">
+                        <p>בהחלט. עבודה נכונה ומבוססת נתונים היא קריטית לעסקים חדשים כדי להימנע מטעויות יקרות. אבנה עבורך אסטרטגיה בטוחה ומדורגת כדי לצמוח חכם.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Big CTA -->
+    <section class="cta-section reveal">
+        <div class="container">
+            <h2>העסק שלך כבר עובד קשה. הגיע הזמן שגם הפרסום יעבוד בשבילך.</h2>
+            <p>בוא נדבר ונבדוק איך אפשר להביא לעסק שלך יותר לקוחות באמצעות פרסום ממומן חכם.</p>
+            <a href="https://wa.me/972552449840?text=היי%20טומי,%20אשמח%20לשמוע%20פרטים%20על%20ניהול%20קמפיינים" target="_blank" class="btn btn-primary" style="background-color: #25D366; color: var(--white); font-size: 1.3rem; padding: 18px 40px; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);"><i class="fa-brands fa-whatsapp"></i> שליחת הודעת וואטסאפ</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>טומי ואן דה חיין</h3>
+            <p style="color: #cbd5e1; margin-top: 5px;">מנהל קמפיינים ממומנים לעסקים קטנים</p>
+            
+            <div class="footer-socials">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> טומי ואן דה חיין. כל הזכויות שמורות.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta">
+        <a href="https://wa.me/972552449840?text=היי%20טומי,%20אשמח%20לשמוע%20פרטים%20על%20ניהול%20קמפיינים" target="_blank" class="btn btn-primary" style="background-color: #25D366; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);"><i class="fa-brands fa-whatsapp"></i> בוואטסאפ נגיב הכי מהר!</a>
+    </div>
+
+    <script>
+        // Set dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // FAQ Accordion logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other open items (optional - remove to allow multiple open)
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Scroll Reveal Animations using Intersection Observer
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Stop observing once revealed
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
